@@ -78,7 +78,13 @@ body {
 	padding: 0px 10px;
 	margin: 20px 0px;
     display:none;
- 
+}
+
+.label {
+    display:block;
+}
+.info {
+    display:block;
 }
 
 
@@ -91,6 +97,9 @@ Make it animate nicely. You'll need CSS3 for this*/
     -o-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     transform: rotate(90deg);
+    -webkit-transition: width 2s, height 2s, -webkit-transform 2s; /* Safari */
+    transition: width 2s, height 2s, transform 2s;
+    
 }
 
 /*Add CSS styles to rotate the element 180deg
@@ -101,6 +110,8 @@ Make it animate nicely. You'll need CSS3 for this*/
     -o-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
+    -webkit-transition: width 2s, height 2s, -webkit-transform 2s; /* Safari */
+    transition: width 2s, height 2s, transform 2s;
 }
 
 /*Add CSS styles to rotate the element 270deg
@@ -111,4 +122,6 @@ Make it animate nicely. You'll need CSS3 for this*/
     -o-transform: rotate(270deg);
     -ms-transform: rotate(270deg);
     transform: rotate(270deg);
+    -webkit-transition: width 2s, height 2s, -webkit-transform 2s; /* Safari */
+    transition: width 2s, height 2s, transform 2s;
 }

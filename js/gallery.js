@@ -40,7 +40,7 @@ function swapPhoto() {
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded 
 	//from the JSON string
-	console.log('swap photo');
+	//console.log('swap photo');
     
     if (mCurrentIndex < mImages.length-1) {
         mCurrentIndex++;
@@ -66,13 +66,15 @@ var mRequest = new XMLHttpRequest();
 // Array holding GalleryImage objects (see below).
 var mImages = [];
 
-// Holds the retrived JSON information
-var mJson;
-
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
 var mUrl = '';
 
+//local server ----------
+//var json = 'http://localhost/is219s18Candelaria-p2/images.json';
+
+//heroku --------------
+var json = 'https://is219s18candelaria-p2.herokuapp.com/images.json';
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
 //@param A GalleryImage object. Use this method for an event handler for loading a gallery Image object (optional).
@@ -114,7 +116,7 @@ $(document).ready( function() {
 
 
 function prevPhoto() {
-    if(mCurrentIndex != 0) {
+    if(mCurrentIndex > 0) {
         //next photo
         mCurrentIndex--;
     } else {
@@ -169,9 +171,9 @@ function createObjects(data) {
 }
 
 window.addEventListener('load', function() {
-	console.log('window loaded');
+	//console.log('window loaded');
     
-    mRequest.open('GET', "http://localhost/is219s18Candelaria-p2/images.json", true);
+    mRequest.open('GET', json, true);
     mRequest.responseType = 'json';
     mRequest.send();
     mRequest.onload = function() {
