@@ -16,7 +16,7 @@
 animate();
 
 var mLastFrameTime = 0;
-var mWaitTime = 5000; //time in ms
+var mWaitTime = 1000; //time in ms
 function animate() {
     requestAnimFrame( animate );
 	var currentTime = new Date().getTime();
@@ -32,7 +32,8 @@ function animate() {
 
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 
-
+// Counter for the mImages array
+var mCurrentIndex = 0;
 
 function swapPhoto() {
 	//Add code here to access the #slideShow element.
@@ -43,11 +44,17 @@ function swapPhoto() {
     
     
     
+    var imgSRC = document.getElementById("photo").src = mImages[mCurrentIndex].img;
+    if (mCurrentIndex < mImages.length-1) {
+        mCurrentIndex++;
+    } else {
+        mCurrentIndex = 0;
+    }
+    
+    
     
 }
 
-// Counter for the mImages array
-var mCurrentIndex = 0;
 
 // XMLHttpRequest variable
 var mRequest = new XMLHttpRequest();
@@ -97,7 +104,7 @@ function createObjects(data) {
     }
     
     //print array
-    console.log(mImages);
+    //console.log(mImages);
     
 }
 
