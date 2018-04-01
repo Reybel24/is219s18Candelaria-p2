@@ -33,7 +33,7 @@ function animate() {
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 
 // Counter for the mImages array
-var mCurrentIndex = 0;
+var mCurrentIndex = -1;
 
 function swapPhoto() {
 	//Add code here to access the #slideShow element.
@@ -42,6 +42,11 @@ function swapPhoto() {
 	//from the JSON string
 	console.log('swap photo');
     
+    if (mCurrentIndex < mImages.length-1) {
+        mCurrentIndex++;
+    } else {
+        mCurrentIndex = 0;
+    }
     
     //update image path
     document.getElementById("photo").src = mImages[mCurrentIndex].img;
@@ -50,14 +55,6 @@ function swapPhoto() {
     document.getElementById("location").innerHTML = mImages[mCurrentIndex].location;
     document.getElementById("description").innerHTML = mImages[mCurrentIndex].description;
     document.getElementById("date").innerHTML = mImages[mCurrentIndex].date;
-    
-    
-    if (mCurrentIndex < mImages.length-1) {
-        mCurrentIndex++;
-    } else {
-        mCurrentIndex = 0;
-    }
-    
     
     
 }
@@ -92,15 +89,63 @@ $(document).ready( function() {
 	$('.details').eq(0).hide();
     
     $("#moreIndicator").click(function() {
-        console.log("clicked");
         if($("#moreIndicator").hasClass("rot90")) {
-              
-        }
-        
+            $("#moreIndicator").removeClass("rot90");
+            $(".img-details").fadeToggle("slow");
+            $("#moreIndicator").addClass("rot270");
+        } else {
+            $("#moreIndicator").removeClass("rot270");
+            $(".img-details").fadeToggle("slow");
+            $("#moreIndicator").addClass("rot90");
+        }   
     })
+    
+    $("#prevPhoto").click(function() {
+        prevPhoto();
+    });
+                      
+    $("#nextPhoto").click(function() {
+        nextPhoto();
+    });    
+    
     
 	
 });
+
+
+function prevPhoto() {
+    if(mCurrentIndex != 0) {
+        //next photo
+        mCurrentIndex--;
+    } else {
+        mCurrentIndex = mImages.length-1;
+    }
+    
+    //update image path
+    document.getElementById("photo").src = mImages[mCurrentIndex].img;
+    
+    //update image details
+    document.getElementById("location").innerHTML = mImages[mCurrentIndex].location;
+    document.getElementById("description").innerHTML = mImages[mCurrentIndex].description;
+    document.getElementById("date").innerHTML = mImages[mCurrentIndex].date;
+}
+function nextPhoto() {
+    if(mCurrentIndex != mImages.length-1) {
+        //next photo
+        mCurrentIndex++;
+    } else {
+        mCurrentIndex = 0;
+    }
+    
+    //update image path
+    document.getElementById("photo").src = mImages[mCurrentIndex].img;
+    
+    //update image details
+    document.getElementById("location").innerHTML = mImages[mCurrentIndex].location;
+    document.getElementById("description").innerHTML = mImages[mCurrentIndex].description;
+    document.getElementById("date").innerHTML = mImages[mCurrentIndex].date;
+}
+
 
 
 function createObjects(data) {
