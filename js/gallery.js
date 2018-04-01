@@ -74,7 +74,7 @@ var mUrl = '';
 //var json = 'http://localhost/is219s18Candelaria-p2/images.json';
 
 //heroku --------------
-var json = 'https://is219s18candelaria-p2.herokuapp.com/images.json';
+var json = 'http://is219s18candelaria-p2.herokuapp.com/images.json';
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
 //@param A GalleryImage object. Use this method for an event handler for loading a gallery Image object (optional).
@@ -173,9 +173,14 @@ function createObjects(data) {
 window.addEventListener('load', function() {
 	//console.log('window loaded');
     
+    //mRequest.setRequestHeader("Access-Control-Allow-Credentials", "true");
+    //mRequest.setRequestHeader("Access-Control-Allow-Methods", "GET");
+    //mRequest.setRequestHeader("Access-Control-Allow-Headers", "Content-Type");
     mRequest.open('GET', json, true);
+    mRequest.setRequestHeader("Access-Control-Allow-Origin","true");
     mRequest.responseType = 'json';
     mRequest.send();
+    
     mRequest.onload = function() {
         var jsonDataArray = mRequest.response;
         createObjects(jsonDataArray);
