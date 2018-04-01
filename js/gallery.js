@@ -16,7 +16,7 @@
 animate();
 
 var mLastFrameTime = 0;
-var mWaitTime = 1000; //time in ms
+var mWaitTime = 5000; //time in ms
 function animate() {
     requestAnimFrame( animate );
 	var currentTime = new Date().getTime();
@@ -43,8 +43,15 @@ function swapPhoto() {
 	console.log('swap photo');
     
     
+    //update image path
+    document.getElementById("photo").src = mImages[mCurrentIndex].img;
     
-    var imgSRC = document.getElementById("photo").src = mImages[mCurrentIndex].img;
+    //update image details
+    document.getElementById("location").innerHTML = mImages[mCurrentIndex].location;
+    document.getElementById("description").innerHTML = mImages[mCurrentIndex].description;
+    document.getElementById("date").innerHTML = mImages[mCurrentIndex].date;
+    
+    
     if (mCurrentIndex < mImages.length-1) {
         mCurrentIndex++;
     } else {
@@ -83,6 +90,14 @@ $(document).ready( function() {
 	
 	// This initially hides the photos' metadata information
 	$('.details').eq(0).hide();
+    
+    $("#moreIndicator").click(function() {
+        console.log("clicked");
+        if($("#moreIndicator").hasClass("rot90")) {
+              
+        }
+        
+    })
     
 	
 });
