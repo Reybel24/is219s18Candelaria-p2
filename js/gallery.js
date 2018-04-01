@@ -32,12 +32,18 @@ function animate() {
 
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 
+
+
 function swapPhoto() {
 	//Add code here to access the #slideShow element.
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded 
 	//from the JSON string
 	console.log('swap photo');
+    
+    
+    
+    
 }
 
 // Counter for the mImages array
@@ -54,7 +60,7 @@ var mJson;
 
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = 'insert_url_here_to_image_json';
+var mUrl = '';
 
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
@@ -70,19 +76,63 @@ $(document).ready( function() {
 	
 	// This initially hides the photos' metadata information
 	$('.details').eq(0).hide();
+    
 	
 });
 
-window.addEventListener('load', function() {
-	
-	console.log('window loaded');
 
+function createObjects(data) {
+    for(i=0;i<data.images.length;i++) {
+        //print out every item from array
+        //console.log(data.images[i]);
+        
+        var imgPath = data.images[i].imgPath;
+        var imgLocation = data.images[i].imgLocation;
+        var description = data.images[i].description;
+        var date = data.images[i].date;
+        
+        //create GalleryImage object and store into array
+        mImages[i] = new GalleryImage(imgPath, imgLocation, description, date);
+        
+    }
+    
+    //print array
+    console.log(mImages);
+    
+}
+
+window.addEventListener('load', function() {
+	console.log('window loaded');
+    
+    mRequest.open('GET', "http://localhost/is219s18Candelaria-p2/images.json", true);
+    mRequest.responseType = 'json';
+    mRequest.send();
+    mRequest.onload = function() {
+        var jsonDataArray = mRequest.response;
+        createObjects(jsonDataArray);
+    }
+        
+    
 }, false);
 
-function GalleryImage() {
+function GalleryImage(path, location, description, date) {
 	//implement me as an object to hold the following data about an image:
 	//1. location where photo was taken
 	//2. description of photo
 	//3. the date when the photo was taken
 	//4. either a String (src URL) or an an HTMLImageObject (bitmap of the photo. https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
+    
+    this.location = location;
+    this.description = description;
+    this.date = date;
+    this.img = path;
+    
+    
 }
+
+
+
+
+
+
+
