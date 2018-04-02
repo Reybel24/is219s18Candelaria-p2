@@ -70,11 +70,13 @@ var mImages = [];
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
 var mUrl = '';
 
-//local server ----------
-//var json = 'http://localhost/is219s18Candelaria-p2/images.json';
+//url: local vs heroku -----------------------------------------------------------
+//var json_url = "http://localhost/is219s18Candelaria-p2/" //local server
+var url = "http://is219s18candelaria-p2.herokuapp.com/" //heroku
 
-//heroku --------------
-var json = 'http://is219s18candelaria-p2.herokuapp.com/images.json';
+
+var json = json_url + "images.json";
+
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
 //@param A GalleryImage object. Use this method for an event handler for loading a gallery Image object (optional).
@@ -110,6 +112,23 @@ $(document).ready( function() {
         nextPhoto();
     });    
     
+    //user-defined json file
+    var GET = window.location.search.substring(1);
+    if(GET != "") {
+        //console.log("user file");
+        //console.log(GET.substring(5));
+        var userJSON = GET.substring(5);
+        
+        //check if file is valid
+        $.get(json_url + userJSON).done(function() { 
+            json = json_url + userJSON;
+        }).fail(function() { 
+            // not valid
+        })
+        
+    } else {
+        //console.log("empty");
+    }
     
 	
 });
@@ -172,10 +191,6 @@ function createObjects(data) {
 
 window.addEventListener('load', function() {
 	//console.log('window loaded');
-    
-    //mRequest.setRequestHeader("Access-Control-Allow-Credentials", "true");
-    //mRequest.setRequestHeader("Access-Control-Allow-Methods", "GET");
-    //mRequest.setRequestHeader("Access-Control-Allow-Headers", "Content-Type");
     mRequest.open('GET', json, true);
     mRequest.setRequestHeader("Access-Control-Allow-Origin","true");
     mRequest.responseType = 'json';

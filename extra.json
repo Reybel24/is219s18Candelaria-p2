@@ -1,0 +1,34 @@
+{
+    "images": [
+        {
+            "imgPath": "img/sharks/bahamas-sawshark1.jpg",
+            "imgLocation": "Atlantic Ocean",
+            "description": "Bahamas Sawshark",
+            "date": "10/31/2014"
+        },
+        {
+            "imgPath": "img/sharks/basking-shark1.jpg",
+            "imgLocation": "Mediterranean Sea",
+            "description": "Basking Shark",
+            "date": "01/03/2016"
+        },
+        {
+            "imgPath": "img/sharks/blacktip-reef-shark1.jpg",
+            "imgLocation": "Atlantic Ocean",
+            "description": "Blacktip Reef Shark",
+            "date": "04/13/2012"
+        },
+        {
+            "imgPath": "img/sharks/bull-shark1.jpg",
+            "imgLocation": "Pacific Ocean",
+            "description": "Bull Shark",
+            "date": "11/13/2009"
+        },
+        {
+            "imgPath": "img/sharks/burmese-bamboo-shark.jpg",
+            "imgLocation": "Northeastern Indian Ocean",
+            "description": "Burmese Bamboo Shark",
+            "date": "02/23/2014"
+        }
+  ]
+}

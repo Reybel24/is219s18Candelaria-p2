@@ -46,6 +46,8 @@ body {
 .banner {
 	text-align: center;
 	font-size: 1.25em;
+    font-family: 'Roboto', sans-serif;
+    font-weight:500; 
 }
 
 #nav {
@@ -81,10 +83,18 @@ body {
 }
 
 .label {
-    display:block;
+    display:inline-block;
+    font-family: 'Roboto', sans-serif;
+    font-weight:500;  
 }
 .info {
-    display:block;
+    left:5px;
+    position:relative;
+    left:5px;
+    font-family: 'Roboto', sans-serif;
+    font-weight:400; 
+    color:#3b3b3b;
+    font-style: italic;
 }
 
 
