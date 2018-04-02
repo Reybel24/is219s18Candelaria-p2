@@ -72,7 +72,7 @@ var mUrl = '';
 
 //url: local vs heroku -----------------------------------------------------------
 //var json_url = "http://localhost/is219s18Candelaria-p2/" //local server
-var url = "http://is219s18candelaria-p2.herokuapp.com/" //heroku
+var json_url = "http://is219s18candelaria-p2.herokuapp.com/" //heroku
 
 
 var json = json_url + "images.json";
