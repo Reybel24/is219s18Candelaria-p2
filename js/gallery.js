@@ -1,3 +1,7 @@
+// Reybel Candelaria
+// IS219, Gallery Project
+// April 2nd, 2018
+
 // requestAnim shim layer by Paul Irish
     window.requestAnimFrame = (function(){
       return  window.requestAnimationFrame       || 
